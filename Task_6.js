@@ -7,9 +7,16 @@
 // Input: [1, 2, 3, 4, 5, 6], 6
 // Output: [1, 2, 3]
 
-const addNum = (arr, num) => {
-  let newArr = [];
-  return newArr;
+const sumValuesTo = (arr = [], sum = 0) => {
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = i + 1; j < arr.length; j++) {
+      for (var k = j + 1; k < arr.length; k++) {
+        if (arr[i] + arr[j] + arr[k] === sum) {
+          return [arr[i], arr[j], arr[k]];
+        }
+      }
+    }
+  }
+  return -1;
 };
-
-console.log(addNum([1, 2, 3, 4, 5, 6], 6));
+console.log(sumValuesTo([1, 2, 3, 4, 5, 6], 6));

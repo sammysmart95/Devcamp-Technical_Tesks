@@ -7,19 +7,17 @@
 // Input: “afhuusnimr443o0sggg”
 // Output: “g”
 
-const mostOccured = (str) => {
-  let splitStr = str.split("");
-  let count = 0;
-  let value = "";
-  for (index in splitStr) {
-    let include = str.indexOf(splitStr[index]);
-    while (include !== -1) {
-      count++;
-      include = str.indexOf(splitStr[index], include + 1);
-      // console.log(include);
+const countCharacter = (str = "") => {
+  let currentCount = 0;
+  let result = "";
+  for (var i = 0; i < str.length; i++) {
+    let count = (str.match(new RegExp(str[i], "g")) || []).length;
+    if (count > currentCount) {
+      currentCount = count;
+      result = str[i];
     }
   }
-  return count;
+  return result;
 };
 
-console.log(mostOccured("mummy"));
+console.log(countCharacter("afhuusnimr443o0sggg"));
